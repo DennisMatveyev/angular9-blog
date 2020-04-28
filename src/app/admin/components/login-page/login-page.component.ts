@@ -14,6 +14,7 @@ import {AuthService} from '../../../shared/services/auth.service';
 export class LoginPageComponent implements OnInit {
 
     form: FormGroup;
+    submitted = false;
 
     constructor(private authService: AuthService, private router: Router) { }
 
@@ -35,6 +36,8 @@ export class LoginPageComponent implements OnInit {
             return;
         }
 
+        this.submitted = true;
+
         const user: User = {
             email: this.form.value.email,
             password: this.form.value.password
@@ -43,6 +46,7 @@ export class LoginPageComponent implements OnInit {
         this.authService.login(user).subscribe(() => {
             this.form.reset();
             this.router.navigate(['/admin', 'dashboard'])
+            this.submitted = false
         })
     }
 
