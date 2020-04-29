@@ -17,3 +17,7 @@ export class Post {
     author: string;
     date: Date
 }
+
+export class firebaseCreatePostResponse {
+    name: string
+}
