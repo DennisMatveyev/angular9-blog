@@ -27,6 +27,8 @@ export class LoginPageComponent implements OnInit {
         this.route.queryParams.subscribe((params: Params) => {
             if (params['needLogin']) {
                 this.needLoginMsg = 'Please, sign in again'
+            } else if (params['authFailed']) {
+                this.needLoginMsg = 'Session expired, log in again'
             }
         });
 
