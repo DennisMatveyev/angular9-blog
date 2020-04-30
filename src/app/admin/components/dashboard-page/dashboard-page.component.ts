@@ -13,6 +13,7 @@ import {Post} from '../../../shared/interfaces';
 })
 export class DashboardPageComponent implements OnInit, OnDestroy {
 
+    searchStr = '';
     posts: Post[] = [];
     pSub: Subscription;
 
