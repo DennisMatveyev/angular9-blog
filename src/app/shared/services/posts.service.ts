@@ -26,7 +26,7 @@ export class PostsService {
             )
     }
 
-    getAll(): Observable<Post[]>{
+    getAll(): Observable<Post[]> {
         return this.http.get(`${environment.firebaseDbUrl}/posts.json`)
             .pipe(
                 map((response) => {
@@ -37,6 +37,23 @@ export class PostsService {
                     }))
                 })
             )
+    }
+
+    getById(id: string): Observable<Post> {
+        return this.http.get<Post>(`${environment.firebaseDbUrl}/posts/${id}.json`)
+            .pipe(
+                map((post: Post) => {
+                    return {
+                        ...post,
+                        id,
+                        date: new Date(post.date)
+                    }
+                })
+            )
+    }
+
+    update(post: Post): Observable<Post> {
+        return this.http.patch<Post>(`${environment.firebaseDbUrl}/posts/${post.id}.json`, post)
     }
 
     remove(id: string): Observable<void> {
