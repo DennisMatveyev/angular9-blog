@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import {NgModule, Provider} from '@angular/core';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,8 +12,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { PostPageComponent } from './components/post-page/post-page.component';
 import { PostComponent } from './components/post/post.component';
 
-import {AuthInterceptor} from './shared/services/auth.interceptor';
-import { ServiceWorkerModule } from '@angular/service-worker';
+import { AuthInterceptor } from './shared/services/auth.interceptor';
 import { environment } from '../environments/environment';
 
 const INTERCEPTORS_PROVIDER: Provider = {
