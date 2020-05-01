@@ -1,23 +1,23 @@
 export interface User {
-    email: string;
-    password: string;
+    email: string
+    password: string
     returnSecureToken?: boolean
 }
 
-export class FirebaseAuthResponse {
-    idToken: string;
+export interface FirebaseAuthResponse {
+    idToken: string
     expiresIn: string
 
 }
 
-export class Post {
-    id?: string;
-    title: string;
-    text: string;
-    author: string;
+export interface Post {
+    id?: string
+    title: string
+    text: string
+    author: string
     date: Date
 }
 
-export class firebaseCreatePostResponse {
+export interface firebaseCreatePostResponse {
     name: string
 }

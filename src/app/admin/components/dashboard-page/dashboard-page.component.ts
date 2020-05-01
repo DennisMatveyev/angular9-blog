@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs';
 
 import {PostsService} from '../../../shared/services/posts.service';
 import {Post} from '../../../shared/interfaces';
+import {AlertService} from '../../alert.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
     pSub: Subscription;
     delSub: Subscription;
 
-    constructor(private postsService: PostsService) { }
+    constructor(private postsService: PostsService, private alert: AlertService) { }
 
     ngOnInit(): void {
         this.pSub = this.postsService.getAll().subscribe(posts => {
@@ -38,7 +39,8 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
 
     remove(id: string) {
         this.delSub = this.postsService.remove(id).subscribe(() => {
-            this.posts = this.posts.filter(post => post.id !== id)
+            this.posts = this.posts.filter(post => post.id !== id);
+            this.alert.warning('Post deleted')
         })
     }
 

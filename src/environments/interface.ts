@@ -1,5 +1,5 @@
-export class Environment {
-    production: boolean;
-    apiKey: string;
+export interface Environment {
+    production: boolean
+    apiKey: string
     firebaseDbUrl: string
 }
